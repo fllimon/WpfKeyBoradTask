@@ -1,0 +1,32 @@
+﻿<Window x:Class="WpfKeyBorad.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfKeyBorad" xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" 
+        d:DataContext="{d:DesignInstance Type=local:ViewModel}"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Background="DarkCyan"
+        Title="Keyboard" Height="600" Width="600">
+    <Grid>
+        <TextBox VerticalAlignment="Center"
+                 x:Name="Box"
+                 HorizontalAlignment="Center" 
+                 Width="250"
+                 Height="40"/>
+
+        <Border x:Name="_border" 
+                VerticalAlignment="Bottom" 
+                HorizontalAlignment="Center">
+
+            <RepeatButton Height="40"
+                          Content="5"
+                          FontSize="18"
+                          Width="40" 
+                          Margin="10"
+                          Focusable="False"
+                          Command="{Binding ButtonClickCommand}"/>
+        </Border>
+    </Grid>
+</Window>
