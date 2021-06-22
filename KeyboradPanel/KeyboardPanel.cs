@@ -44,7 +44,7 @@ namespace KeyboradPanel
     ///     <MyNamespace:CustomControl1/>
     ///
     /// </summary>
-    public class KeyboardPanel : Panel
+    public class KeyboardPanel :  StackPanel
     {
         static KeyboardPanel()
         {
@@ -61,20 +61,20 @@ namespace KeyboradPanel
                 panelSize = child.DesiredSize;
             }
 
-            return panelSize;
+            return base.MeasureOverride(panelSize);
         }
 
         protected override Size ArrangeOverride(Size finalSize)
         {
+            double x = 0;
+            double y = 0;
+
             foreach (UIElement child in InternalChildren)
             {
-                double x = 50;
-                double y = 50;
-
-                child.Arrange(new Rect(new Point(x, y), child.DesiredSize));
+                child.Arrange(new Rect(x, y, child.DesiredSize.Width, child.DesiredSize.Height));
             }
 
-            return finalSize;
+            return base.ArrangeOverride(new Size(x, finalSize.Height));
         }
     }
 }

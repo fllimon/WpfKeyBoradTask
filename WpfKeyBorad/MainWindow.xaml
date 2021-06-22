@@ -4,29 +4,33 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfKeyBorad" xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" 
-        d:DataContext="{d:DesignInstance Type=local:ViewModel}"
+        xmlns:customPanel="clr-namespace:KeyboradPanel;assembly=KeyboradPanel"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         Background="DarkCyan"
-        Title="Keyboard" Height="600" Width="600">
+        Title="Keyboard" Height="1000" Width="1000">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/KeyboradPanel;component/Themes/KeyboardPanel.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
     <Grid>
         <TextBox VerticalAlignment="Center"
                  x:Name="Box"
                  HorizontalAlignment="Center" 
-                 Width="250"
-                 Height="40"/>
-
-        <Border x:Name="_border" 
-                VerticalAlignment="Bottom" 
-                HorizontalAlignment="Center">
-
-            <RepeatButton Height="40"
-                          Content="5"
-                          FontSize="18"
-                          Width="40" 
-                          Margin="10"
-                          Focusable="False"
-                          Command="{Binding ButtonClickCommand}"/>
-        </Border>
+                 Width="450"
+                 Height="70"/>
+        
+        <customPanel:KeyboardPanel VerticalAlignment="Bottom" HorizontalAlignment="Left">
+            <ItemsControl ItemsSource="{Binding Buttons}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+            </ItemsControl>
+        </customPanel:KeyboardPanel>
     </Grid>
 </Window>
