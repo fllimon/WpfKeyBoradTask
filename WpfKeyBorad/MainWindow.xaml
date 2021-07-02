@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         Background="DarkCyan"
-        Title="Keyboard" Height="1000" Width="1000">
+        Title="Keyboard" Height="900" Width="1200">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -22,15 +22,16 @@
                  HorizontalAlignment="Center" 
                  Width="450"
                  Height="70"/>
-        
-        <customPanel:KeyboardPanel VerticalAlignment="Bottom" HorizontalAlignment="Left">
-            <ItemsControl ItemsSource="{Binding Buttons}">
-                <ItemsControl.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <StackPanel Orientation="Horizontal"/>
-                    </ItemsPanelTemplate>
-                </ItemsControl.ItemsPanel>
-            </ItemsControl>
-        </customPanel:KeyboardPanel>
+
+        <ItemsControl VerticalAlignment="Bottom" ItemsSource="{Binding Buttons}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <customPanel:KeyboardPanel Margin="10"
+                                               HorizontalAlignment="Center">
+
+                    </customPanel:KeyboardPanel>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+        </ItemsControl>
     </Grid>
 </Window>
